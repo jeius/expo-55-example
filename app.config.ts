@@ -24,6 +24,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundImage: "./assets/images/android-icon-background.png",
       monochromeImage: "./assets/images/android-icon-monochrome.png",
     },
+    config: { googleMaps: { apiKey: process.env.ANDROID_MAPS_API_KEY } },
     predictiveBackGestureEnabled: false,
     package: "com.jeius.expo_55_example",
   },
@@ -34,6 +35,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   plugins: [
     "expo-router",
+    "expo-location",
     [
       "react-native-google-maps-plus",
       {

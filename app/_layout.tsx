@@ -4,6 +4,7 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import * as Location from "expo-location";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
@@ -37,6 +38,10 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
+  useEffect(() => {
+    getCurrentPosition();
+  }, []);
+
   if (!loaded) {
     return null;
   }
@@ -57,4 +62,34 @@ function RootLayoutNav() {
       <Stack screenOptions={{ headerShown: false }} />
     </ThemeProvider>
   );
+}
+
+async function getCurrentPosition(
+  options: Location.LocationOptions = {
+    accuracy: Location.Accuracy.High,
+    timeInterval: 1000,
+  },
+) {
+  const { canAskAgain, granted } =
+    await Location.getForegroundPermissionsAsync();
+
+  if (!granted && !canAskAgain) {
+    throw new Error("Location permission was permanently denied");
+  }
+
+  if (!granted && canAskAgain) {
+    const { status: newStatus } =
+      await Location.requestForegroundPermissionsAsync();
+    switch (newStatus) {
+      case Location.PermissionStatus.DENIED:
+        throw new Error("Location permission was denied");
+      case Location.PermissionStatus.UNDETERMINED:
+        throw new Error("Location permission is undetermined");
+      default:
+        break;
+    }
+  }
+
+  console.log("🧭 Getting current location...");
+  return Location.getCurrentPositionAsync(options);
 }
