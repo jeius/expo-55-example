@@ -104,7 +104,7 @@ export default function MapView({
   };
 
   const initialProps: RNInitialProps = {
-    camera: { center: DEFAULT_LOCATION.center, zoom: 16 },
+    camera: { center: DEFAULT_LOCATION.center, zoom: 12 },
     backgroundColor: theme === "dark" ? "#4f4f4f" : "#FFFFFF",
   };
 
