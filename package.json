@@ -1,0 +1,54 @@
+{
+  "name": "expo-55-example",
+  "main": "expo-router/entry",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "build:local:android-dev": "eas build --platform android --profile development --local --output ./build/android/dev.apk",
+    "build:local:android-preview": "eas build --platform android --profile preview --local --output ./build/android/preview.apk"
+  },
+  "dependencies": {
+    "@react-navigation/native": "^7.1.28",
+    "expo": "~55.0.4",
+    "expo-constants": "~55.0.7",
+    "expo-dev-client": "~55.0.10",
+    "expo-font": "~55.0.4",
+    "expo-linking": "~55.0.7",
+    "expo-router": "~55.0.3",
+    "expo-splash-screen": "~55.0.10",
+    "expo-status-bar": "~55.0.4",
+    "expo-symbols": "~55.0.4",
+    "expo-system-ui": "~55.0.9",
+    "expo-web-browser": "~55.0.9",
+    "nativewind": "5.0.0-preview.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "react-native": "0.83.2",
+    "react-native-css": "^3.0.4",
+    "react-native-google-maps-plus": "1.11.0",
+    "react-native-nitro-modules": "^0.33.9",
+    "react-native-reanimated": "4.2.1",
+    "react-native-safe-area-context": "~5.6.2",
+    "react-native-screens": "~4.23.0",
+    "react-native-web": "~0.21.0",
+    "react-native-worklets": "0.7.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
+    "@types/react": "~19.2.2",
+    "postcss": "^8.5.6",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.2.1",
+    "typescript": "~5.9.2"
+  },
+  "private": true,
+  "pnpm": {
+    "overrides": {
+      "lightningcss": "1.30.1"
+    }
+  },
+  "packageManager": "pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9a740017"
+}

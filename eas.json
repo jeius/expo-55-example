@@ -1,0 +1,38 @@
+{
+  "cli": {
+    "version": ">= 18.0.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "base": {
+      "node": "24.13.1",
+      "pnpm": "10.30.3",
+      "env": {
+        "EXPO_USE_FAST_RESOLVER": "true",
+        "ANDROID_MAPS_API_KEY": "$ANDROID_MAPS_API_KEY",
+        "IOS_MAPS_API_KEY": "$IOS_MAPS_API_KEY"
+      }
+    },
+    "development": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal",
+      "environment": "development",
+      "env": {
+        "EXPO_PUBLIC_ENVIRONMENT": "development",
+        "NODE_ENV": "development"
+      }
+    },
+    "preview": {
+      "extends": "base",
+      "distribution": "internal"
+    },
+    "production": {
+      "extends": "base",
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
