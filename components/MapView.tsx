@@ -1,6 +1,6 @@
 import React from "react";
 import type { ViewProps } from "react-native";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import {
   GoogleMapsView,
   GoogleMapsViewRef,
@@ -18,13 +18,11 @@ import { callback } from "react-native-nitro-modules";
 
 import { PHILIPPINES_COORDINATES } from "@/constants";
 import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
-import { View } from "./Themed";
 import { useColorScheme } from "./useColorScheme";
 
 type Props = Pick<ViewProps, "style" | "children"> &
   RNGoogleMapsPlusViewProps & {
     mapRef?: React.RefObject<GoogleMapsViewRef | null>;
-    hideUserLocationMarker?: boolean;
     offset?: EdgeInsets;
     containerStyle?: ViewProps["style"];
     containerClassName?: ViewProps["className"];
@@ -88,7 +86,6 @@ export function wrapCallback<T extends (...args: any[]) => void>(
 
 export default function MapView({
   children,
-  hideUserLocationMarker = false,
   offset,
   containerClassName,
   containerStyle,
@@ -100,14 +97,15 @@ export default function MapView({
   const uiSettings = createUISettings(props.uiSettings);
 
   const mapPadding: RNMapPadding = {
-    top: insets.top + 20 + (offset?.top ?? 0),
-    left: insets.left + 20 + (offset?.left ?? 0),
-    bottom: insets.bottom + 20 + (offset?.bottom ?? 0),
-    right: insets.right + 20 + (offset?.right ?? 0),
+    top: insets.top + 16 + (offset?.top ?? 0),
+    left: insets.left + 16 + (offset?.left ?? 0),
+    bottom: insets.bottom + 16 + (offset?.bottom ?? 0),
+    right: insets.right + 16 + (offset?.right ?? 0),
   };
 
   const initialProps: RNInitialProps = {
     camera: { center: DEFAULT_LOCATION.center, zoom: 16 },
+    backgroundColor: theme === "dark" ? "#4f4f4f" : "#FFFFFF",
   };
 
   return (
