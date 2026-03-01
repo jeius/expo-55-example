@@ -90,6 +90,9 @@ export default function HomeScreen() {
             • Package: react-native-google-maps-plus v1.11.0
           </Text>
           <Text className="text-xs text-slate-600 dark:text-slate-400">
+            • Nitro Modules: 0.32.0
+          </Text>
+          <Text className="text-xs text-slate-600 dark:text-slate-400">
             • Expo: ~55.0.4
           </Text>
           <Text className="text-xs text-slate-600 dark:text-slate-400">
