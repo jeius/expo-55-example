@@ -17,7 +17,7 @@ import {
 import { callback } from "react-native-nitro-modules";
 
 import { PHILIPPINES_COORDINATES } from "@/constants";
-import { EdgeInsets, useSafeAreaInsets } from "react-native-safe-area-context";
+import { EdgeInsets } from "react-native-safe-area-context";
 import { useColorScheme } from "./useColorScheme";
 
 type Props = Pick<ViewProps, "style" | "children"> &
@@ -92,15 +92,14 @@ export default function MapView({
   ...props
 }: Props) {
   const theme = useColorScheme();
-  const insets = useSafeAreaInsets();
 
   const uiSettings = createUISettings(props.uiSettings);
 
   const mapPadding: RNMapPadding = {
-    top: insets.top + 16 + (offset?.top ?? 0),
-    left: insets.left + 16 + (offset?.left ?? 0),
-    bottom: insets.bottom + 16 + (offset?.bottom ?? 0),
-    right: insets.right + 16 + (offset?.right ?? 0),
+    top: 16 + (offset?.top ?? 0),
+    left: 16 + (offset?.left ?? 0),
+    bottom: 16 + (offset?.bottom ?? 0),
+    right: 16 + (offset?.right ?? 0),
   };
 
   const initialProps: RNInitialProps = {

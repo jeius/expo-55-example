@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import * as Location from "expo-location";
-import { Stack } from "expo-router";
+import { Tabs } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
@@ -51,15 +51,49 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={isDark ? DarkTheme : DefaultTheme}>
       <StatusBar
-        style={colorScheme === "dark" ? "light" : "dark"}
+        style={isDark ? "light" : "dark"}
         animated
         hideTransitionAnimation="slide"
       />
-      <Stack screenOptions={{ headerShown: false }} />
+      <Tabs
+        screenOptions={{
+          headerShown: false,
+          headerTitleAlign: "left",
+          tabBarActiveTintColor: isDark ? "#fff" : "#000",
+          tabBarInactiveTintColor: isDark ? "#999" : "#ccc",
+          tabBarStyle: {
+            backgroundColor: isDark ? "#1a1a1a" : "#fff",
+            borderTopColor: isDark ? "#333" : "#eee",
+          },
+          tabBarLabelStyle: {
+            fontSize: 16,
+            fontWeight: "800",
+            marginTop: 6,
+          },
+          tabBarIcon: () => null,
+          tabBarIconStyle: { width: 0, height: 0 },
+        }}
+      >
+        <Tabs.Screen
+          name="(home)"
+          options={{
+            title: "Home",
+            tabBarLabel: "Home",
+          }}
+        />
+        <Tabs.Screen
+          name="(maps)"
+          options={{
+            title: "Maps",
+            tabBarLabel: "Maps",
+          }}
+        />
+      </Tabs>
     </ThemeProvider>
   );
 }
