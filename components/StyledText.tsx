@@ -1,5 +1,10 @@
+import { tva } from "@gluestack-ui/utils";
 import { Text, TextProps } from "react-native";
 
-export function MonoText(props: TextProps) {
-  return <Text {...props} className={`font-mono ${props.className}`} />;
+const baseClassName = tva({
+  base: "text-foreground font-mono",
+});
+
+export function MonoText({ className, ...props }: TextProps) {
+  return <Text {...props} className={baseClassName({ className })} />;
 }

@@ -11,6 +11,7 @@
     "build:local:android-preview": "eas build --platform android --profile preview --local --output ./build/android/preview.apk"
   },
   "dependencies": {
+    "@gluestack-ui/utils": "4.1.0-alpha.0",
     "@react-navigation/native": "^7.1.28",
     "expo": "~55.0.4",
     "expo-constants": "~55.0.7",
