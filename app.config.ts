@@ -27,6 +27,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     config: { googleMaps: { apiKey: process.env.ANDROID_MAPS_API_KEY } },
     predictiveBackGestureEnabled: false,
     package: "com.jeius.expo_55_example",
+    permissions: ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"],
   },
   web: {
     bundler: "metro",
@@ -35,7 +36,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   plugins: [
     "expo-router",
-    "expo-location",
     [
       "react-native-google-maps-plus",
       {
